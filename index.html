@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Page</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			height: 100vh;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#video-container {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#video-container video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			z-index: -1;
+		}
+
+		#bottom-image {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			z-index: 1;
+		}
+
+		#right-image {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%);
+			z-index: 2;
+		}
+
+		#left-forecast {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+			z-index: 2;
+		}
+
+		#top-image {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+	<div id="video-container">
+		<video autoplay loop muted>
+			<source src="my-video.mp4" type="video/mp4">
+		</video>
+		<img id="right-image" src="right-image.jpg" alt="Right Image">
+		<div id="left-forecast">Weather Forecast</div>
+	</div>
+	<img id="bottom-image" src="bottom-image.jpg" alt="Bottom Image">
+	<img id="top-image" src="top-image.jpg" alt="Top Image">
+</body>
+</html>
