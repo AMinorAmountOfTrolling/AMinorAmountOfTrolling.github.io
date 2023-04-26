@@ -11,6 +11,10 @@
 			height: 100vh;
 			justify-content: center;
 			align-items: center;
+			background-image: url(top-image.jpg);
+			background-position: top;
+			background-repeat: no-repeat;
+			background-size: cover;
 		}
 
 		#video-container {
@@ -38,6 +42,11 @@
 			bottom: 0;
 			left: 0;
 			width: 100%;
+			height: 150px;
+			background-image: url(bottom-image.jpg);
+			background-position: bottom;
+			background-repeat: no-repeat;
+			background-size: cover;
 			z-index: 1;
 		}
 
@@ -57,24 +66,47 @@
 			z-index: 2;
 		}
 
-		#top-image {
+		#time {
 			position: absolute;
 			top: 0;
-			left: 0;
-			width: 100%;
-			z-index: 1;
+			right: 0;
+			margin: 10px;
+			color: white;
+			font-size: 20px;
 		}
 	</style>
 </head>
 <body>
 	<div id="video-container">
-		<video autoplay loop muted>
-			<source src="https://discord.com/channels/975124934491766895/975366031243616257/1096378436882272296" type="video/mp4">
+		<video loop muted>
+			<source src="example.mp4" type="video/mp4">
+			<source src="example.webm" type="video/webm">
+			<source src="example.ogv" type="video/ogv">
 		</video>
-		<img id="right-image" src="https://media.discordapp.net/attachments/975366031243616257/1096378002474020955/IMG_5550.png" alt="Right Image">
-		<div id="left-forecast">Weather Forecast</div>
+		<a href="https://example.com"><img id="right-image" src="right-image.jpg" alt="Right Image"></a>
+		<div id="left-forecast"><a href="https://example.com">Weather Forecast</a></div>
+		<div id="time"></div>
 	</div>
-	<img id="bottom-image" src="bottom-image.jpg" alt="Bottom Image">
-	<img id="top-image" src="top-image.jpg" alt="Top Image">
+	<div id="bottom-image"><a href="https://example.com"></a></div>
+
+	<script>
+		function updateTime() {
+			var now = new Date();
+			var hours = now.getHours();
+			var minutes = now.getMinutes();
+			var seconds = now.getSeconds();
+			var timeString = hours.toString().padStart(2, '0') + ':' +
+				minutes.toString().padStart(2, '0') + ':' +
+				seconds.toString().padStart(2, '0');
+			document.getElementById('time').textContent = timeString;
+		}
+		updateTime();
+		setInterval(updateTime, 1000);
+
+		function refreshPage() {
+			window.location.reload();
+		}
+		setInterval(refreshPage, 3600000); // 3600000 milliseconds = 1 hour
+	</script>
 </body>
 </html>
